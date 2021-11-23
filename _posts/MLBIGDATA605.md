@@ -19,11 +19,11 @@ EMCD,(T) = max{n| ES~Dn[ErrorS(T(S))]  }
   
   “Double descent” occurs after a point of interpolation, which is when the training error decreases and approaches zero while the test error increases. The point of interpolation is also the point where the model perfectly fits the dataset. This means that as the model complexity increases (or as EMC increases on the x-axis), we start to see the train and test error decrease. The figure above shows a Res18 neural network based model trained on different complexity parameters and demonstrates how double descent occurs after the point of interpolation. Visually, we can see the direct relationship between model complexity, testing error, and training error. As the model increases in complexity, the training error consistently decreases but the test error initially decreases and then increases due to the model being in the “under-parameterized” regime. Within the classical regime, deep learning models will typically follow this behavior due to the bias-variance tradeoff. However, after the point of interpolation, the training error will continue to approach zero while the test error will experience a second descent after the interpolation threshold. As model complexity increases, we see three different states where the model fluctuates in test error, although the training error is consistently decreasing. These states relate to the “Deep Double Descent” hypothesis. This paper describes three different states for a neural network based training process regime; below are the formal definitions for the three regimes.
 
-  Under-Parameterized Regime: Given the case where the Effective Model Complexity is smaller than the size of the dataset, then any training procedure that increases the effective model complexity (such as adding more parameters) will decrease the test error. 
+  **Under-Parameterized Regime**: Given the case where the Effective Model Complexity is smaller than the size of the dataset, then any training procedure that increases the effective model complexity (such as adding more parameters) will decrease the test error. 
 
-  Over-Parameterized Regime: Given the case where the Effective Model Complexity is greater than the size of the dataset, then any training procedure that increases the effective model complexity (such as adding more parameters) will decrease the test error.
+  **Over-Parameterized Regime**: Given the case where the Effective Model Complexity is greater than the size of the dataset, then any training procedure that increases the effective model complexity (such as adding more parameters) will decrease the test error.
 
-  Critically Parameterized regime: A set of parameters where the behavior of test error is uncertain since increasing model complexity can result in a decrease or increase in test error. 
+  **Critically Parameterized regime**: A set of parameters where the behavior of test error is uncertain since increasing model complexity can result in a decrease or increase in test error. 
 
 ### Experimental Setup
 
@@ -35,11 +35,9 @@ EMCD,(T) = max{n| ES~Dn[ErrorS(T(S))]  }
 
   The authors trained these three models on several different datasets, such as the IWSLT ’14 German to English dataset and the WMT ’14 English to French dataset, and calculated the training and testing error. They obtained the following results:
   
-  Firstly, the paper identifies the critical regime, which is a region where increasing model complexity leads to an increase in training and testing error. In this regime, models are barely large enough to fit the training data. The location of the critical regime can be affected by the type of optimization algorithm used, the number of training samples, or the amount of label noise. Notably, the model-wise double descent phenomenon is most easily observed when there is added label noise. 
-  
-	Secondly, the paper also finds that there is a regime where increasing the sample size increases the cross-entropy test loss. This occurs in the critical region, when the model size is just large enough to accommodate the number of training samples. In this region, adding more data to the training sample may not improve, and can even hurt, train and test error. This phenomenon, referred to as sample-wise non-monotonicity, was observed for Transformers trained on language translation tasks. However, this result is not unique to only deep neural networks; adding more data can also negatively impact linear models in this regime.
-  
-  Lastly, the paper discusses epoch-wise double descent, which is a regime where training longer can reverse overfitting. In this regime, for a fixed model size, as the training time increases, test and train error decreases, increases, and then decreases again. This trend can be explained as a function of EMC; when the EMC is smaller than the number of samples, performance follows the classical U-curve, but once the EMC is larger than the number of samples, performance only improves.
+<p>Firstly, the paper identifies the critical regime, which is a region where increasing model complexity leads to an increase in training and testing error. In this regime, models are barely large enough to fit the training data. The location of the critical regime can be affected by the type of optimization algorithm used, the number of training samples, or the amount of label noise. Notably, the model-wise double descent phenomenon is most easily observed when there is added label noise.</p>
+<p>Secondly, the paper also finds that there is a regime where increasing the sample size increases the cross-entropy test loss. This occurs in the critical region, when the model size is just large enough to accommodate the number of training samples. In this region, adding more data to the training sample may not improve, and can even hurt, train and test error. This phenomenon, referred to as sample-wise non-monotonicity, was observed for Transformers trained on language translation tasks. However, this result is not unique to only deep neural networks; adding more data can also negatively impact linear models in this regime.</p>
+<p>Lastly, the paper discusses epoch-wise double descent, which is a regime where training longer can reverse overfitting. In this regime, for a fixed model size, as the training time increases, test and train error decreases, increases, and then decreases again. This trend can be explained as a function of EMC; when the EMC is smaller than the number of samples, performance follows the classical U-curve, but once the EMC is larger than the number of samples, performance only improves.</p>
   
   The reasons behind these results are not fully understood. However, the intuition is that at the point of interpolation, there are no models that can both interpolate the train set and fit the test set. However, once we get past the point of interpolation, there are many models that can fit the training data, leading to lower train and test error.
   
@@ -57,3 +55,11 @@ This experiment proves that even for different types of training procedures, dou
   As datasets grow larger and the field of machine learning advances, it is important to consider how to best train deep neural networks and other machine learning models to obtain the most accurate results. This paper presents an interesting and relevant phenomenon in relation to testing and training deep learning models; fully understanding and exploring the mechanisms behind double descent may provide us with even more insight into the power of machine learning.
 
 ### Bibliography
+@misc{nakkiran2019deep,
+      title={Deep Double Descent: Where Bigger Models and More Data Hurt}, 
+      author={Preetum Nakkiran and Gal Kaplun and Yamini Bansal and Tristan Yang and Boaz Barak and Ilya Sutskever},
+      year={2019},
+      eprint={1912.02292},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
