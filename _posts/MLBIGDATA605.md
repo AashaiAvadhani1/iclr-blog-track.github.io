@@ -52,6 +52,12 @@ EMCD,(T) = max{n| ES~Dn[ErrorS(T(S))]  }
 
   We don’t only notice double descent for standard training procedures for deep learning methods. We can notice this phenomenon in different training methods as well.
   
+  ![Image3](https://github.com/AashaiAvadhani1/iclr-blog-track.github.io/blob/master/public/images/Figure3.PNG)
+  *From Deep Double Descent: Where Bigger Models and More Data Hurt*
+  
+  ![Image4](https://github.com/AashaiAvadhani1/iclr-blog-track.github.io/blob/master/public/images/Figure4.PNG)
+  *From Deep Double Descent: Where Bigger Models and More Data Hurt*
+  
   The paper mainly covers neural network based models for deep learning. For example, ensemble methods are common techniques used to create highly accurate machine learning models. Another experiment conducted for this paper used an ensemble of five RestNet18 models with label noise to determine whether double descent would occur. The ensemble classifier was determined by a plurality vote from the five base models. The ensemble method error is tested against the standard model, which is a single Resnet18 without label noise. We see on the figure to the left, that the ensemble method reduced the increase in test error within the critical regime. Furthermore, we see that the test error is far less than the standard test error of a single RestNet18 model trained on the dataset with labeled noise. The figure on the right shows the same effect; however, the ensemble models were CNNs and they were not trained on a dataset without labeled noise. We see similar results from the previous ensemble experiment with Resnet19 models. The test error is lower, and the double descent effect is less prominent within the critical regime, with a slight increase at a width parameter of around 10 for the CNN. 
 This experiment proves that even for different types of training procedures, double descent can still occur. For both of the ensembled experiments, we notice that the model goes through the three different regimes outlined in the hypothesis such that when the model complexity increases, there is still a critical regime where the test error increases and then decreases for the ensembled model.
   
