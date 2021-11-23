@@ -1,8 +1,9 @@
 ---
+title: "10-605 Deep Double Descent"
 layout: post
-title: 10-605 Deep Double Descent
 tags: []
-authors: Avadhani, Aashai, Carnegie Mellon University; Kim, Julia, Carnegie Mellon University
+authors: Avadhani, Aashai, Carnegie Mellon University; Kim, Julia, Carnegie Mellon
+  University
 ---
 
 ### Introduction
