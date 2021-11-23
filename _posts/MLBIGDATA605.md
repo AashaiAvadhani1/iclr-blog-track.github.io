@@ -13,7 +13,7 @@ authors: Avadhani, Aashai, Carnegie Mellon University; Kim, Julia, Carnegie Mell
 
   “Deep Double Descent: Where Bigger Models and More Data Hurt,” unravels the behavior between model complexity and training data size. Many conventional theories of machine learning, such as “more data is always better,” are challenged in this paper using evidence that modern deep learning models have different behaviors in different regimes. This paper addresses different circumstances where model performance could either improve or decline based on the complexity of the model and defines a new measurement called effective model complexity. EMC is explained as the maximum number of samples on which the model can achieve close to zero training error. EMC is also defined mathematically below:	
   
-EMCD,(T) = max{n| ES~Dn[ErrorS(T(S))]  }
+![equation](https://github.com/AashaiAvadhani1/iclr-blog-track.github.io/blob/master/public/images/equation.PNG)
 
   A common concept in statistics is that there is a bias-variance tradeoff: higher complexity models have lower bias and higher variance, while lower complexity models have higher bias and lower variance. When model complexity is low and the number of training samples is high, deep learning models exhibit the typical bias-variance tradeoff. This is called the under-parameterized regime. However, when model complexity is large compared to the number of samples, then increasing model complexity lowers training error. This phenomenon, first defined by Belkin et al. (2018), is called double descent. 
   
